@@ -28,7 +28,7 @@ public class AccountHolderController {
 	
 	@RequestMapping(path="/AccountHolder", method=RequestMethod.GET, produces="application/json")
 	public ResponseEntity<List<AccountHolder>> getAccountHolders(){
-		System.out.println("Hitting Controller---------------->");
+		System.out.println("Hitting Account Holder Controller---------------->");
 		List<AccountHolder> accountHolders = accountHolderServices.getAccountHolders();
 		return new ResponseEntity<List<AccountHolder>>(accountHolders, HttpStatus.OK);
 	}

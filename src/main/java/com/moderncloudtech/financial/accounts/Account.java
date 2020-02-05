@@ -45,11 +45,14 @@ public class Account {
 	@Column(name="ACTIVE")
 	private boolean active;
 	
+	@Column(name="HOLDERID")
+	private Long holderId;
+	
 	public Account() {
 		super();
 	}
 
-	public Account(Long accountId, String accountType, String iban, BigDecimal balance, String currency, LocalDate openDate, boolean active) {
+	public Account(Long accountId, String accountType, String iban, BigDecimal balance, String currency, LocalDate openDate, boolean active, Long holderId) {
 		super();
 		this.accountId = accountId;
 		this.accountType = accountType;
@@ -58,6 +61,7 @@ public class Account {
 		this.currency = currency;
 		this.openDate = openDate;
 		this.active = active;
+		this.holderId = holderId;
 	}
 
 	public Account(String accountType, String iban, BigDecimal balance, String currency, LocalDate openDate, boolean active) {
@@ -126,25 +130,22 @@ public class Account {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+	
+	public Long getHolderId() {
+		return holderId;
+	}
+
+	public void setHolderId(Long holderId) {
+		this.holderId = holderId;
+	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Account [accountId=");
-		builder.append(accountId);
-		builder.append(", iban=");
-		builder.append(iban);
-		builder.append(", balance=");
-		builder.append(balance);
-		builder.append(", currency=");
-		builder.append(currency);
-		builder.append(", openDate=");
-		builder.append(openDate);
-		builder.append(", active=");
-		builder.append(active);
-		builder.append("]");
-		return builder.toString();
+		return "Account [accountId=" + accountId + ", accountType=" + accountType + ", iban=" + iban + ", balance="
+				+ balance + ", currency=" + currency + ", openDate=" + openDate + ", active=" + active + ", holderId="
+				+ holderId + "]";
 	}
+
 	
 	
 	

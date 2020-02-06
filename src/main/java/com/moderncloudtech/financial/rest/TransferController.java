@@ -13,30 +13,27 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.moderncloudtech.financial.accounts.Account;
-import com.moderncloudtech.financial.accounts.Transfer;
 import com.moderncloudtech.financial.services.TransferServices;
 
-@Controller
+
+
+@RestController
 public class TransferController {
 
 	private TransferServices transferServices;
 	
-	@Autowired
-	//private CurrencyServices currencyServices;
 	
 	public TransferController(TransferServices transferServices) {
 		super();
 		this.transferServices = transferServices;
-	//	this.currencyServices = currencyServices;
-	}
+		}
 	
 	
 	@RequestMapping(path="/Transfer", method=RequestMethod.GET)

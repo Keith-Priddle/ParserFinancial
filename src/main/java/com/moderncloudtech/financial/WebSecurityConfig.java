@@ -41,7 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout()
 				.permitAll().and()			
 				.headers().addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "http://localhost:4200"))
-				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","http://212.227.94.224:8080"));
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","http://212.227.94.224:8080"))
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","http://77.68.7.229:8080"));
 	}
 
 	@Bean

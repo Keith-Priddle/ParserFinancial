@@ -26,7 +26,7 @@ public class DBConfiguration {
 	@Profile("dev")
 	@Bean
 	public String devDatabaseConnection() {
-		System.out.println("Running in Dev Profile using MYSQL +++++++++++++++++++");	
+		System.out.println("Running in Dev Profile using H2InMemory +++++++++++++++++++");	
 		return "Running in test profile";
 	}
 	

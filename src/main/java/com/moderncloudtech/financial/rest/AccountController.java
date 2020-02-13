@@ -53,6 +53,7 @@ public class AccountController {
 		
 	}
 	
+	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(path="/Account/list", method=RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Account>> getAccounts(){
 		List<Account> accounts = accountServices.getAccounts();

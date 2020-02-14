@@ -32,8 +32,7 @@ public class AccountServices {
 	}
 	
 	
-	public Account createAccount()
-	
+
 	
 	public List<Account> getAllAccounts(){
 		List<Account> accounts = new ArrayList<>();

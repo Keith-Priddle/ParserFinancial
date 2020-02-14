@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource",
+      "type": "com.moderncloudtech.financial.DBConfiguration",
+      "sourceType": "com.moderncloudtech.financial.DBConfiguration"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

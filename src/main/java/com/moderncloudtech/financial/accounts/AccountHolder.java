@@ -17,7 +17,7 @@ public class AccountHolder {
 
 	@Id
 	@Column(name="HOLDERID")
-	//GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long holderId;
 	
 	@Column(name="EMAIL")

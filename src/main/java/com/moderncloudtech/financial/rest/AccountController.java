@@ -33,17 +33,19 @@ public class AccountController {
 		this.accountServices = accountServices;
 	}
 	
-	@RequestMapping(path="/Account}", method=RequestMethod.GET, produces = "application/json" )
+	@RequestMapping(path="/Account", method=RequestMethod.GET, produces = "application/json" )
 	public ResponseEntity<List<Account>> getAllAccounts(){
 		List<Account> accounts = accountServices.getAllAccounts();
 		return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	}
 	
 	
-	//public String getAllAccounts(Model model) {
-	//	model.addAttribute("accounts", this.accountServices);
-	//	return "accounts";
-	//}
+	@RequestMapping(path="/Account/{holderid}", method=RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<List<Account>> getByAccountHolder(@PathVariable Long holderid){
+		List<Account> accounts = this.accountServices.getByAccountHolder(holderid);
+		return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(path="/Account/c/{currency}", method=RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Account>> getByCurrency(@PathVariable("currency") String currency){

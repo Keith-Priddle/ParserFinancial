@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,11 @@ public class AccountServices {
 	public List<Account> getAllAccounts(){
 		List<Account> accounts = new ArrayList<>();
 		this.accountRepository.findAll().forEach(accounts::add);
+		return accounts;
+	}
+	
+	public List<Account> getByAccountHolder(Long holderId){
+		List<Account> accounts = this.accountRepository.getByAccountHolder(holderId);
 		return accounts;
 	}
 	

@@ -19,7 +19,7 @@ import javax.persistence.GenerationType;
 @Entity
 @Table(name="ACCOUNT")
 public class Account {
-
+	
 	@Id
 	@Column(name="ACCOUNTID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

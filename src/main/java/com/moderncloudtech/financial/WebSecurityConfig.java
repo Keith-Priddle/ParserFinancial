@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/", "/home").permitAll()
-				.antMatchers("/Account","Account/list","/Account/**").permitAll()
+				.antMatchers("/Account","/Account/**").permitAll()
 				.antMatchers("/Transfer", "/Transfer/**").permitAll()
 				.antMatchers("/AccountHolder","AccountHolder/**").permitAll()
 				.anyRequest().authenticated()
@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.logout()
 				.permitAll().and()			
-				.headers().addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "http://*:4200"))
+				.headers().addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "http://localhost:4200"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","http://212.227.94.224:80"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","http://77.68.7.229:80"));
 	}

@@ -31,6 +31,10 @@ public class AccountServices {
 		this.accountRepository = accountRepository;
 	}
 	
+	
+	public Account createAccount()
+	
+	
 	public List<Account> getAllAccounts(){
 		List<Account> accounts = new ArrayList<>();
 		this.accountRepository.findAll().forEach(accounts::add);

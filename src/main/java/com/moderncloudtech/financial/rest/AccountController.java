@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,32 +29,29 @@ public class AccountController {
 	}
 	
 	
-	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/", method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE,
-			consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Account> createAccount(Account account){
+	@RequestMapping(path="/Account", method=RequestMethod.POST,consumes="application/json", produces="application/json")
+	public ResponseEntity<Account> createAccount(@RequestBody Account account){
 		 
 		accountServices.createAccount(account);
 		return new ResponseEntity<Account>(account, HttpStatus.CREATED);
 	}
 	
 	
-	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(path="/Account", method=RequestMethod.GET,consumes="application/json", produces="application/json")
 	public ResponseEntity<List<Account>> getAllAccounts(){
 		List<Account> accounts = accountServices.getAllAccounts();
 		return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	}
 	
-	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account/{holderid}", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	
+	@RequestMapping(path="/Account/{holderid}", method=RequestMethod.GET,consumes="application/json", produces="application/json")
 	public ResponseEntity<List<Account>> getByAccountHolder(@PathVariable Long holderid){
 		List<Account> accounts = this.accountServices.getByAccountHolder(holderid);
 		return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	}
 	
-	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account/c/{currency}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	
+	@RequestMapping(path="/Account/c/{currency}", method=RequestMethod.GET,consumes="application/json", produces="application/json")
 	public ResponseEntity<List<Account>> getByCurrency(@PathVariable("currency") String currency){
 		
 		List<Account> accounts = accountServices.getAccountsByCurrency(currency);

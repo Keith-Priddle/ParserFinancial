@@ -55,7 +55,7 @@ public class AccountServices {
 		
 	}
 	
-	@RequestMapping(path="/", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	
 	public Account createAccount(Account account) {
 		System.out.println("AccountService");
 		

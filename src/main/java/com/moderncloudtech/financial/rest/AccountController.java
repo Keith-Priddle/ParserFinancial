@@ -6,6 +6,7 @@ package com.moderncloudtech.financial.rest;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,29 +29,31 @@ public class AccountController {
 	
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account", method=RequestMethod.POST,consumes="application/json", produces = "application/json" )
+	@RequestMapping(path="/Account", method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE,
+			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Account> createAccount(Account account){
-		this.accountServices.createAccount(account);
+		 
+		accountServices.createAccount(account);
 		return new ResponseEntity<Account>(account, HttpStatus.CREATED);
 	}
 	
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account", method=RequestMethod.GET, produces = "application/json" )
+	@RequestMapping(path="/Account", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Account>> getAllAccounts(){
 		List<Account> accounts = accountServices.getAllAccounts();
 		return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account/{holderid}", method=RequestMethod.GET, produces = "application/json")
+	@RequestMapping(path="/Account/{holderid}", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Account>> getByAccountHolder(@PathVariable Long holderid){
 		List<Account> accounts = this.accountServices.getByAccountHolder(holderid);
 		return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account/c/{currency}", method=RequestMethod.GET, produces = "application/json")
+	@RequestMapping(path="/Account/c/{currency}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Account>> getByCurrency(@PathVariable("currency") String currency){
 		
 		List<Account> accounts = accountServices.getAccountsByCurrency(currency);

@@ -29,7 +29,7 @@ public class AccountController {
 	
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account", method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE,
+	@RequestMapping(path="/", method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE,
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Account> createAccount(Account account){
 		 

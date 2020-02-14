@@ -44,14 +44,14 @@ public class AccountController {
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account/{holderid}", method=RequestMethod.GET,consumes="application/json", produces="application/json")
-	public ResponseEntity<List<Account>> getByAccountHolder(@PathVariable Long holderid){
-		List<Account> accounts = this.accountServices.getByAccountHolder(holderid);
+	@RequestMapping(path="/Account/h/{holderid}", method=RequestMethod.GET,produces="application/json")
+	public ResponseEntity<List<Account>> getByAccountHolder(@PathVariable("holderid") Long holderId){
+		List<Account> accounts = this.accountServices.getByAccountHolder(holderId);
 		return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(path="/Account/c/{currency}", method=RequestMethod.GET,consumes="application/json", produces="application/json")
+	@RequestMapping(path="/Account/c/{currency}", method=RequestMethod.GET, produces="application/json")
 	public ResponseEntity<List<Account>> getByCurrency(@PathVariable("currency") String currency){
 		
 		List<Account> accounts = accountServices.getAccountsByCurrency(currency);

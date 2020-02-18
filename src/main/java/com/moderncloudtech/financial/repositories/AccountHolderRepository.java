@@ -14,6 +14,7 @@ import com.moderncloudtech.financial.accounts.AccountHolder;
 @RepositoryRestResource(collectionResourceRel = "AccountHolder", path = "AccountHolder")
 public interface AccountHolderRepository extends CrudRepository<AccountHolder, Long> {
 
+	
 	@Query("select a from AccountHolder a")
 	List<AccountHolder> GetAllAH();
 	

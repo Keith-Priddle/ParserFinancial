@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.moderncloudtech.financial.accounts.AccountHolder;
@@ -29,10 +28,12 @@ public class AccountHolderServices {
 		return accountHolders;
 	}
 	
-	public void createAccountHolder(AccountHolder accountHolder) {
-		AccountHolder newAcc = new AccountHolder();
-				newAcc.setHolderId(1L);
-		this.accountHolderRepository.save(newAcc);
+	
+	public AccountHolder createAccountHolder(AccountHolder accountHolder) {
+		System.out.println("AccountHolderService");
+		
+		this.accountHolderRepository.save(accountHolder);
+		return accountHolder;
 	}
 	
 }

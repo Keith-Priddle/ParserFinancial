@@ -38,9 +38,9 @@ public class TransferController {
 	
 	
 	@RequestMapping(path="/Transfer", method=RequestMethod.GET)
-	public String getAllTransfers(Model model) {
-		model.addAttribute("transfers", this.transferServices);
-		return "transfers";
+	public ResponseEntity<List<Transfer>> getAllTransfers(Model model) {
+		List<Transfer> transfers = transferServices.getAllTransfers();
+		return new ResponseEntity<List<Transfer>>(transfers, HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="/Transfer/list", method=RequestMethod.GET, produces = "application/json" )
@@ -64,25 +64,10 @@ public class TransferController {
 		return new ResponseEntity<List<Transfer>>(transfers, HttpStatus.OK);
 	}
 	
-	@RequestMapping(path="/Transfer", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE,
-			consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(path="/Transfer", method=RequestMethod.POST, consumes="application/json", produces="application/json")
 	public ResponseEntity<Transfer> createTransfer(@RequestBody Transfer transfer) throws IOException{
 		this.transferServices.create(transfer);
 		return new ResponseEntity<Transfer>(transfer, HttpStatus.CREATED);
 	}
-	
-	
-	//CurrencyService for fx Rates Test
-//	@RequestMapping(path="/Currency", method=RequestMethod.GET)
-//	public ResponseEntity<Currency> getCurrency() throws IOException {
-//		Currency curr = currencyServices.getCurrency();
-//		//System.out.println(this.currencyService.webClient.get().retrieve().t
-//		
-//		return new ResponseEntity<Currency>(curr,HttpStatus.OK);
-//		
-//	}
-
-
-	
 	
 }

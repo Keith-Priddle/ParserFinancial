@@ -1,1 +1,4 @@
-This is a new doc
+This is a new doc in another file
+
+
+This is testing the build pipeline
